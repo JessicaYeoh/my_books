@@ -3,7 +3,6 @@ session_start();
 include '../model/db.php';
 include '../model/db_functions.php';
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") //if the form values has been posted
 {
 	//input sanitation
@@ -13,6 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //if the form values has been posted
 	// PASSWORD_HASH
 	$password= password_hash($password2, PASSWORD_DEFAULT);
 
+	$firstname = !empty($_POST['firstName'])? test_user_input(($_POST['firstName'])): null;
+	$surname = !empty($_POST['surname'])? test_user_input(($_POST['surname'])): null;
+	$userrole = !empty($_POST['userRole'])? test_user_input(($_POST['userRole'])): null;
 
 	try
 	{
@@ -23,24 +25,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //if the form values has been posted
             'username' => $username,
             'password' => $password,
             );
-		$table="login"; //table name in DB to insert data into
-		//function call from db_functions.php
-		insertData($table,$data);
+				$table="login"; //table name in DB to insert data into
+				//function call from db_functions.php
+				insertData($table,$data);
 
-// var1 = lastinsertid();
-//
-// 		$data = array(
-//
-// 		)
+				$loginID = $conn->lastinsertid();
 
-		header('location:../view/html/loggedin_page.php'); //where to redirect when registration is successful
+				$data =
+				array(
+						'firstName' => $firstname,
+						'surname' => $surname,
+						'userRole' => $userrole,
+						'LogInID' => $loginID
+						);
+				$table="users";
+				insertData($table,$data);
+
+
+				$_SESSION['message'] = "User added successfully!";
+
+				header('location: http://localhost/mybooks/view/html/register.php'); //where to redirect when registration is successful
 		}
 	}
-		catch(PDOException $e)
-		{
-			echo "Error: ".$e -> getMessage();
-			die();
-		}
+	catch(PDOException $e)
+	{
+		echo "Error: ".$e -> getMessage();
+		die();
+	}
 }
 
 ?>

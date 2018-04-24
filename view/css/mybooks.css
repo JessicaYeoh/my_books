@@ -33,13 +33,30 @@ nav {
 
 footer {
   width: 100%;
-  height: auto;
+  height: 100px;
   position: relative;
   top: 40px;
-  background-color: pink;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /****************LOG IN HOME PAGE/REGISTER PAGE*******************/
+#register_success_msg{
+  margin: 0 auto;
+  padding-top: 40px;
+  font-size: 18px;
+  color: blue;
+}
+
+#email_status{
+	color: red;
+	font-size: 1em;
+  margin-bottom: 5px;
+}
+
 #login_container{
   background-image: url("../images/book_background.png");
   background-position: center;
@@ -84,9 +101,9 @@ footer {
 }
 
 #register_form{
-  position: relative;
-  top: 100px;
   margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 20px;
 }
 
 body.my-login-page {
@@ -173,47 +190,84 @@ body.my-login-page {
 
 /****************SHOW BOOKS PAGE*********************/
 
+#loggedin_as{
+  width: 100%;
+  height: auto;
+  text-align: right;
+  padding: 10px;
+  padding-right: 30px;
+  font-size: 18px;
+}
+
 #showBooks_container{
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto;
   justify-content: center;
   width: 100%;
   height: auto;
   position: relative;
   top: 40px;
-  padding: 20px;
-  margin: 0 auto;
-  /*margin-top: 80px;*/
+  margin-bottom: 40px;
 }
 
 .book{
-  width: 20%;
-  min-width: 250px;
-  max-width: 300px;
-  /*float: left;*/
+  display: grid;
+  justify-content: center;
+  width: 30%;
+  height: 480px;
+  min-width: 280px;
+  max-width: 450px;
   box-sizing: border-box;
-  height: auto;
   border: 1px solid blue;
   border-radius: 8px;
   text-align: center;
   margin: 10px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .book h1, .book h2, .book h3{
-  width: 100%;
-  height: 30px;
   font-size: 1.2em;
   margin: 0;
   padding-top: 8px;
 }
 
+.book h1{
+  grid-column: 1 /span 3;
+  grid-row: 1;
+}
+
+.book h2{
+  grid-column: 1 /span 3;
+  grid-row: 2;
+  height: 40px;
+}
+
+.cover{
+  grid-column: 1 /span 3;
+  grid-row: 3;
+  height: 280px;
+  margin: 15px auto;
+  width: 220px;
+}
+
+.book h3{
+  grid-column: 1 /span 3;
+  grid-row: 4;
+}
+
+.book .mill_sold{
+  grid-column: 1 /span 3;
+  grid-row: 5;
+  margin-bottom: 10px;
+}
+
+.update_delete{
+  grid-column: 1 /span 3;
+  grid-row: 6;
+}
+
 #update_delete{
-  width: 100%;
-  height: 30px;
   display: inline-flex;
+  margin-top: 10px;
 }
 
 #update_button, #delete_button{
@@ -229,47 +283,135 @@ body.my-login-page {
   margin-left: 15px;
 }
 
-.book img{
-  height: 280px;
-  width: 80%;
-  margin-top: 15px;
+@media screen and (max-width: 950px) {
+	#showBooks_container{
+    grid-template-columns: auto auto;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	#showBooks_container{
+    grid-template-columns: auto;
+	}
 }
 /*************END OF SHOW BOOKS PAGE***************/
 
 /*************ADD NEW BOOKS PAGE***************/
-#add_newbook{
+#add_newbook,
+#update_form{
   position: relative;
-  top: 80px;
+  top: 50px;
   width: 60%;
   min-width: 300px;
   margin: 0 auto;
   padding: 20px;
 }
 
-#add_newbook .form-group{
+#update_form{
+  position: relative;
+  top: 30px;
+  margin-bottom: 30px;
+}
+
+#update_form h1{
+  margin-bottom: 40px;
+}
+
+#add_newbook .form-group,
+#update_form .form-group{
   display: inline-flex;
   width: 100%;
   align-items: center;
 }
 
-#add_newbook .form-group label{
+#add_newbook .form-group label,
+#update_form .form-group label{
   width: 15%;
+  min-width: 100px;
 }
 
-#add_newbook .form-group input{
+#add_newbook .form-group input,
+#update_form .form-group input{
   width: 85%;
 }
 
-#add_newbook .form-group button{
+#edit_button,
+#add_button{
   width: 100px;
   height: 40px;
   padding: 0;
 }
 
+#file_error_msg p,
+#update_msg p{
+  color: red;
+  font-size: 1.3em;
+}
 /*************END OF ADD NEW BOOKS PAGE***************/
 
 
-#update_form{
-  position: relative;
-  top: 50px;
+/*Add image styling*/
+.userimg {
+	width: 50px;
+	height:auto;
+}
+
+#image_preview{
+position: absolute;
+font-size: 30px;
+top: 100px;
+left: 100px;
+width: 220px;
+height: 250px;
+text-align: center;
+line-height: 180px;
+font-weight: bold;
+color: #C0C0C0;
+background-color: #FFFFFF;
+overflow: hidden;
+}
+
+#file {
+color: red;
+padding: 5px;
+border: 5px solid #77d7f5;
+background-color: #77d7f5;
+margin-top: 10px;
+border-radius: 5px;
+box-shadow: 0 0 15px #626F7E;
+margin-left: 15%;
+width: 72%;
+}
+#message{
+position:absolute;
+top:120px;
+left:815px;
+}
+#success
+{
+color:green;
+}
+#invalid
+{
+color:red;
+}
+#line
+{
+margin-top: 274px;
+}
+#error
+{
+color:red;
+}
+#error_message
+{
+color:blue;
+}
+#loading
+{
+display:none;
+position:absolute;
+top:50px;
+left:850px;
+font-size:25px;
 }

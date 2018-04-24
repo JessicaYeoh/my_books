@@ -1,7 +1,30 @@
 <?php
   session_start();
+  if(!$_SESSION['login']){
+    header("location:http://localhost/mybooks/index.php");
+    die;
+  }
+
+  if(isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['role'] == 'Employee'){
+    header("location:http://localhost/mybooks/index.php");
+    die;
+  }
+
   include 'head.php';
+  include 'nav.php';
+  include 'header.php';
 ?>
+
+<div id="register_success_msg">
+  <?php
+      //if $_SESSION['message'] is not set then set it as nothing to eliminate an undeclared variable error
+      if (!isset($_SESSION['message'])){
+          $_SESSION['message'] = "";
+      }
+      echo $_SESSION['message'];
+      unset ($_SESSION['message']); //this line clears what is set in the session variable['message']
+  ?>
+</div>
 
 	<section id="register_form" class="h-100">
 		<div class="container h-100">
@@ -16,22 +39,45 @@
 
 								<div class="form-group">
 									<label for="username">Username</label>
-									<input id="username" type="text" class="form-control" name="username" required>
+									<input id="username" type="text" class="form-control" name="username" required onkeyup="checkemail()" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{4,20}$" oninvalid="setCustomValidity('Minimum 5 characters starting with a letter, no special characters allowed')" oninput="setCustomValidity('')">
 								</div>
+
+<div id="email_status"></div>
 
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
+									<input id="password" type="password" class="form-control" name="password" required data-eye pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="setCustomValidity('Minimum 8 characters, atleast 1 uppercase, lowercase and number. Special characters allowed.')" oninput="setCustomValidity('')">
 								</div>
 
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="aggree" value="1"> I agree to the Terms and Conditions
-									</label>
+                <div class="form-group">
+									<label for="firstName">First Name</label>
+									<input id="firstName" type="text" class="form-control" name="firstName" required pattern="^\p{Lu}\p{L}+(?:[\s,.'-]\p{L}+)?$" oninvalid="setCustomValidity('Incorrect format! First letter must be uppercase.')" oninput="setCustomValidity('')">
 								</div>
+
+                <div class="form-group">
+                  <label for="surname">Surname</label>
+                  <input id="surname" type="text" class="form-control" name="surname" required pattern="^\p{Lu}\p{L}+(?:[\s,.'-]\p{L}+)?$" oninvalid="setCustomValidity('Incorrect format! First letter must be uppercase.')" oninput="setCustomValidity('')">
+                </div>
+
+
+                <label> User role</label>
+
+                <div class="form-check">
+                  <label class="form-check-label" for="admin">
+                    <input id="admin" class="form-check-input" type="checkbox" store="checkbox1" value="Administrator" name="userRole">
+                    Administrator
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <label class="form-check-label" for="employee">
+                    <input id="employee" class="form-check-input" type="checkbox" store="checkbox2" value="Employee" name="userRole">
+                    Employee
+                  </label>
+                </div>
+
 
                 <input type="hidden" name="action_type" value="add"/>
-                <!-- Why is this input inserted? doesn't the action take place with the submit button?-->
 
 								<div class="form-group no-margin">
 									<button type="submit" class="btn btn-primary btn-block" name="register_submit">
@@ -39,40 +85,20 @@
 									</button>
 								</div>
 
-								<div class="margin-top20 text-center">
-									Already have an account? <a href="../index.php">Login</a>
-								</div>
-
-								<!-- <div id="register_errDiv">
-
-										<?php
-										// if(!isset($_SESSION['error'])) {
-										// 	$_SESSION['error'] = "";
-										// }
-										?>
-
-										<?php
-									  //  echo $_SESSION['message'];
-									  //  echo $_SESSION['error'];
-										//  unset ($_SESSION['error']);
-										?>
-
-								</div> -->
 							</form>
-<!--************************** FIRST PART OF REGISTRATION **************************-->
+
 
 						</div>
 					</div>
-					<div class="footer">
-						Copyright &copy; 2017 &mdash; Your Company
-					</div>
+
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- <script src="js/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/my-login.js"></script> -->
+<?php
+include 'footer.php';
+?>
+
 </body>
 </html>
