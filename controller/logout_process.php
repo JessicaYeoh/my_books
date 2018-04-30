@@ -17,6 +17,6 @@
   unset($_SESSION['file_msg']);
   unset($_SESSION['imagename']);
 
-  header('Location: http://localhost/mybooks/index.php');
+  header('Location: ../index.php');
 
 ?>

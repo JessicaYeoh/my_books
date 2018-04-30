@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!$_SESSION['login']){
-  header("location: http://localhost/mybooks/index.php");
+  header("location: ../../index.php");
   die;
 }
 
@@ -52,7 +52,7 @@ $millionsSold = $updateBooks['MillionsSold'];
 
       <div class="form-group">
         <label for="book_title">Book Title</label>
-        <input id="book_title" type="text" class="form-control" name="book_title" value="<?php echo $bookTitle; ?>" required autofocus pattern="^[A-Z][a-zA-Z0-9-_\.]{1,100}$" oninvalid="setCustomValidity('Incorrect format! First letter must be uppercase.')" oninput="setCustomValidity('')">
+        <input id="book_title" type="text" class="form-control" name="book_title" value="<?php echo $bookTitle; ?>" required autofocus pattern="^[A-Z][a-zA-Z0-9-_\. ]{1,100}$" oninvalid="setCustomValidity('Incorrect format! First letter must be uppercase.')" oninput="setCustomValidity('')">
       </div>
 
       <div class="form-group">

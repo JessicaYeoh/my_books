@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") //if the form values has been posted
 
 				$_SESSION['message'] = "User added successfully!";
 
-				header('location: http://localhost/mybooks/view/html/register.php'); //where to redirect when registration is successful
+				header('location: ../view/html/register.php'); //where to redirect when registration is successful
 		}
 	}
 	catch(PDOException $e)

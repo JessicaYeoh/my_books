@@ -17,10 +17,10 @@
           $_SESSION["login"] = true;
           $_SESSION["userID"] = $rows['usersID'];
           $_SESSION["role"] = $rows['userRole'];
-          header('location:http://localhost/mybooks/view/html/loggedin_page.php');
+          header('location: ../view/html/loggedin_page.php');
         } else {
           $_SESSION['error'] = "Incorrect username or password!";
-          header('location:http://localhost/mybooks/index.php');
+          header('location: ../index.php');
         }
     }
     catch(PDOException $e) {

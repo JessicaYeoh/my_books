@@ -1,12 +1,12 @@
 <?php
   session_start();
   if(!$_SESSION['login']){
-    header("location:http://localhost/mybooks/index.php");
+    header("location: ../../index.php");
     die;
   }
 
   if(isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['role'] == 'Employee'){
-    header("location:http://localhost/mybooks/index.php");
+    header("location: ../../index.php");
     die;
   }
 

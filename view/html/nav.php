@@ -11,14 +11,12 @@
 
 <?php
 
-$PHP_SELF=$_SERVER['PHP_SELF'];
-
-$RootDir='http://'.$_SERVER['HTTP_HOST'].'/mybooks'.substr($PHP_SELF,0,strrpos($PHP_SELF,''));
+// $PHP_SELF=$_SERVER['PHP_SELF'];
+//
+// $RootDir='http://'.$_SERVER['HTTP_HOST'].'/mybooks'.substr($PHP_SELF,0,strrpos($PHP_SELF,''));
 
       // Navbar Brand
-      echo '<a href="';
-            echo $RootDir;
-            echo'/view/html/loggedin_page.php" class="navbar-brand">
+      echo '<a href="loggedin_page.php" class="navbar-brand">
                 MyBooks
             </a>
         </div>';
@@ -29,30 +27,22 @@ echo '<div class="collapse navbar-collapse" id="exampleNavComponents">';
           // Navbar Menu
     echo '<ul class="nav navbar-nav navbar-right">
                 <li class="active">
-                    <a href="';
-                    echo $RootDir;
-                    echo'/view/html/loggedin_page.php">Display Books</a>
+                    <a href="loggedin_page.php">Display Books</a>
                 </li>
                 <li class="active">
-                    <a href="';
-                    echo $RootDir;
-                    echo'/view/html/add_newbook.php">Add New Book</a>
+                    <a href="add_newbook.php">Add New Book</a>
                 </li>';
 
 if (isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['role'] == 'Administrator') {
 
           echo '<li class="active">
-                    <a href="';
-                    echo $RootDir;
-                    echo'/view/html/register.php">Register</a>
+                    <a href="register.php">Register</a>
                 </li>';
 
 }
 
             echo '<li class="active" id="logout">
-                  <form action="';
-                  echo $RootDir;
-                  echo'/controller/logout_process.php" method="post">
+                  <form action="../../controller/logout_process.php" method="post">
                     <button id="logout_button" class="btn btn-primary" href="#">Logout</button>
                   </form>
                 </li>

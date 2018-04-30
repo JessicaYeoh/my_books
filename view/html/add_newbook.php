@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!$_SESSION['login']){
-  header("location: http://localhost/mybooks/index.php");
+  header("location: ../../index.php");
   die;
 }
 

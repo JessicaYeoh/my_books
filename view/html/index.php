@@ -3,8 +3,8 @@
 ?>
 
 <?php
-include "../model/db.php";
-include "html/head.php";
+include "../../model/db.php";
+include "head.php";
 ?>
 
 <div id="login_container">
@@ -21,7 +21,7 @@ include "html/head.php";
               <div class="card fat">
                 <div class="card-body">
                   <h4 class="card-title">Login</h4>
-                  <form action="../controller/login_process.php" method="POST">
+                  <form action="../../controller/login_process.php" method="POST">
 
                     <div class="form-group">
                       <label for="username2">Username</label>
@@ -68,9 +68,7 @@ include "html/head.php";
                   </form>
                 </div>
               </div>
-              <!-- <div class="footer">
-                Copyright &copy; 2018 &mdash; MyBooks
-              </div> -->
+
             </div>
           </div>
         </div>

@@ -40,7 +40,7 @@
   				$_SESSION['message'] = "Book updated successfully!";
 
           //where to redirect when edit is successful
-  				header('location: http://localhost/mybooks/view/html/edit.php?BookID='.$_GET['BookID'].'');
+  				header('location: ../view/html/edit.php?BookID='.$_GET['BookID'].'');
 
   		}
   	}
