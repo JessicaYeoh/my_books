@@ -104,7 +104,7 @@ include '../../model/db.php';
 
       <div class="form-group">
         <label for="ranking">Ranking</label>
-        <input id="ranking" type="text" class="form-control" name="ranking" value="" required autofocus pattern="[0-9]{1}" oninvalid="setCustomValidity('Invalid format')" oninput="setCustomValidity('')">
+        <input id="ranking" type="text" class="form-control" name="ranking" value="" required autofocus pattern="[0-9]{2}" min="1" max="10" oninvalid="setCustomValidity('Invalid format')" oninput="setCustomValidity('')">
       </div>
 
       <input type="hidden" name="action_type" value="add"/>

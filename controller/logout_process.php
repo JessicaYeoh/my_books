@@ -11,11 +11,7 @@
   unset($_SESSION['role']);
   unset($_SESSION['message']);
   unset($_SESSION['firstname']);
-
-  unset($_SESSION['updated']);
   unset($_SESSION['bookID']);
-  unset($_SESSION['file_msg']);
-  unset($_SESSION['imagename']);
 
   header('Location: ../index.php');
 
